@@ -3,15 +3,15 @@ grammar Calc;
 stmt: expr* EOF;
 
 expr: '(' expr ')' |
-      expr ('*'|'/') expr|
-      expr ('+'| '-') expr|
+      expr (MULT|DIV) expr|
+      expr (PLUS|MINUS) expr|
       SCIENTIFIC_NUMBER;
 
 
 WS : [ \t\n\r]+ -> channel(HIDDEN) ;
 
 SCIENTIFIC_NUMBER
-   : NUMBER ((E1 | E2) SIGN? NUMBER)?
+   : SIGN? NUMBER ((E1 | E2) SIGN? NUMBER)?
    ;
 
 PLUS
@@ -20,6 +20,15 @@ PLUS
 
 MINUS
    : '-'
+   ;
+
+MULT
+   : '*'
+   ;
+
+
+DIV
+   : '/'
    ;
 
 fragment E1

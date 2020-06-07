@@ -1,6 +1,7 @@
 plugins {
     kotlin("jvm") version "1.3.61"
     antlr
+    //antlr("org.antlr:antlr4:4.5")
 }
 
 group = "org.jetbrains"

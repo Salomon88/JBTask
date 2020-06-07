@@ -1,6 +1,5 @@
 package org.jetbrains;
-
-import org.jetbrains.factory.CalculatorFactory;
+import org.jetbrains.calculator.CalculatorFactory;
 
 public class JavaCalculator {
     /*
@@ -15,12 +14,21 @@ public class JavaCalculator {
                 JavaCalculator.class.getName());
         if(expression.length()==0) return 0d;
         if(expression.length()==1) return Double.valueOf(expression);
-
         //return 3.0;
-        return CalculatorFactory.getCalc().evaluate(expression);
+        return CalculatorFactory.getCalc(expression).evaluate();
+    }
+
+    private static boolean validateSyntax() {
+
+        return true;
     }
 
     public static void main(String[] args) {
-        evaluate("3+ 3 *5");
+        System.out.println(evaluate("3+ 3 *5"));
+        System.out.println(evaluate("2*3.14"));
+        System.out.println(evaluate("2*3.14*-1"));
+        System.out.println(evaluate("1+-3*3"));
+//        ICalculator icalc = CalculatorFactory.getCalc();
+//        List<Double> doubleList = new ArrayList<String>().stream().map(icalc::evaluate).collect(toList());
     }
 }
