@@ -11,8 +11,7 @@ public class JavaCalculator {
      */
     public static Double evaluate(String expression) {
 
-        if (expression == null) throw new NullPointerException("Expression value can't be null for " +
-                JavaCalculator.class.getName());
+        if (expression == null) throw new NullPointerException("Expression value can't be null");
         if (expression.length() == 0) return 0d;
         return CalculatorFactory.getCalc(expression).evaluate();
     }

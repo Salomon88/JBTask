@@ -32,7 +32,10 @@ tasks {
             "-no-listener",
             "-visitor",
             "-package",
-            "org.jetbrains.calculator.antlr.gen"
+            "org.jetbrains.calculator.antlr",
+            "-Xexact-output-dir",
+            "-o",
+            "/home/salamon/разработка/calculator/src/main/java/org/jetbrains/calculator/antlr"
         )
     }
 }

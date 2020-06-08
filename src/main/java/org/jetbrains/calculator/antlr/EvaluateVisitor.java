@@ -1,11 +1,5 @@
 package org.jetbrains.calculator.antlr;
 
-import org.jetbrains.calculator.antlr.gen.CalcBaseVisitor;
-import org.jetbrains.calculator.antlr.gen.CalcParser;
-
-import java.util.HashMap;
-import java.util.Map;
-
 import static java.util.Objects.nonNull;
 
 public class EvaluateVisitor extends CalcBaseVisitor<Double> {
