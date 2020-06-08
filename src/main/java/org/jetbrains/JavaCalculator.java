@@ -1,4 +1,5 @@
 package org.jetbrains;
+
 import org.jetbrains.calculator.CalculatorFactory;
 
 public class JavaCalculator {
@@ -10,24 +11,21 @@ public class JavaCalculator {
      */
     public static Double evaluate(String expression) {
 
-        if(expression==null) throw new NullPointerException("Expression value can't be null for " +
+        if (expression == null) throw new NullPointerException("Expression value can't be null for " +
                 JavaCalculator.class.getName());
-        if(expression.length()==0) return 0d;
-        if(expression.length()==1) return Double.valueOf(expression);
-        //return 3.0;
+        if (expression.length() == 0) return 0d;
         return CalculatorFactory.getCalc(expression).evaluate();
     }
 
-    private static boolean validateSyntax() {
-
-        return true;
-    }
-
     public static void main(String[] args) {
+        System.out.println(evaluate("3"));
+        System.out.println(evaluate("-3"));
+        System.out.println(evaluate("+3"));
         System.out.println(evaluate("3+ 3 *5"));
         System.out.println(evaluate("2*3.14"));
         System.out.println(evaluate("2*3.14*-1"));
         System.out.println(evaluate("1+-3*3"));
+        System.out.println(evaluate("(3*(1+2)) -6"));
 //        ICalculator icalc = CalculatorFactory.getCalc();
 //        List<Double> doubleList = new ArrayList<String>().stream().map(icalc::evaluate).collect(toList());
     }

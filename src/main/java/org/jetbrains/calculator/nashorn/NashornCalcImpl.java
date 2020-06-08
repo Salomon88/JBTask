@@ -1,12 +1,14 @@
-package org.jetbrains.calculator;
+package org.jetbrains.calculator.nashorn;
+
+import org.jetbrains.calculator.AbstractCalc;
 
 import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
 import javax.script.ScriptException;
 
-class NashornCalcImpl extends AbstractCalc{
+public class NashornCalcImpl extends AbstractCalc {
 
-    NashornCalcImpl(String expression) {
+    public NashornCalcImpl(String expression) {
         super(expression);
     }
 

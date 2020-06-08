@@ -1,18 +1,17 @@
 grammar Calc;
 
-stmt: expr* EOF;
+stmt: expr EOF;
 
-expr: '(' expr ')' |
-      expr (MULT|DIV) expr|
-      expr (PLUS|MINUS) expr|
-      SCIENTIFIC_NUMBER;
+expr: '(' expr ')' #paren |
+      expr (MULT|DIV) expr #MulDiv |
+      expr (PLUS|MINUS) expr #PlusMinus |
+      doublen #number;
 
-
-WS : [ \t\n\r]+ -> channel(HIDDEN) ;
-
-SCIENTIFIC_NUMBER
-   : SIGN? NUMBER ((E1 | E2) SIGN? NUMBER)?
-   ;
+doublen:
+  PLUS NUMBER |
+  MINUS NUMBER|
+  NUMBER
+  ;
 
 PLUS
    : '+'
@@ -31,16 +30,12 @@ DIV
    : '/'
    ;
 
-fragment E1
-   : 'E'
-   ;
-fragment E2
-   : 'e'
+NUMBER
+   : ('0' .. '9') + ('.' ('0' .. '9') +)?
    ;
 
 fragment SIGN
    : ('+' | '-')
    ;
-fragment NUMBER
-   : ('0' .. '9') + ('.' ('0' .. '9') +)?
-   ;
+
+WS : [ \t\n\r]+ -> channel(HIDDEN) ;
