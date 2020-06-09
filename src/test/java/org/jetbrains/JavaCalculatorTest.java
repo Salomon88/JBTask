@@ -2,25 +2,16 @@ package org.jetbrains;
 
 
 import org.jetbrains.calculator.CalculatorFactory;
-import org.jetbrains.calculator.ICalculator;
-import org.jetbrains.calculator.antlr.ANTLRCalcImpl;
-import org.jetbrains.calculator.polish.PolishCalcImpl;
-import org.jetbrains.calculator.polish.ShuntingYardAlg;
 import org.jetbrains.exceptions.IncorrectSyntaxExpression;
-import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
-import org.junit.runners.Parameterized;
-
-import java.util.Arrays;
-import java.util.Collection;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 
 public class JavaCalculatorTest {
 
-    public static final CalculatorFactory.EvaluatotType type = CalculatorFactory.EvaluatotType.ANTLR;
+    public static final CalculatorFactory.EvaluatorType type = CalculatorFactory.EvaluatorType.NASHORN;
 
     @Test
     public void simpleAddTest() {
@@ -122,6 +113,17 @@ public class JavaCalculatorTest {
     @Test(expected = IncorrectSyntaxExpression.class)
     public void incorrectSyntaxTest() {
         assertEquals(7.0, JavaCalculator.evaluate("a+4 ", type), 1e-4);
+    }
+
+    //TODO implement for Polish implementation
+    @Test
+    public void negativeExpression1Test() {
+        assertEquals(-7.0, JavaCalculator.evaluate("-(4+3) ", type), 1e-4);
+    }
+
+    @Test
+    public void negativeExpression2Test() {
+        assertEquals(1.0, JavaCalculator.evaluate("-(3-4) ", type), 1e-4);
     }
 
 //        ICalculator icalc = CalculatorFactory.getCalc();

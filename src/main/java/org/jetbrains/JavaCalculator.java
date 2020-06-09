@@ -22,10 +22,7 @@ public class JavaCalculator {
      * @return  - Double value of calculation
      **/
 
-    public static Double evaluate(String expression, CalculatorFactory.EvaluatotType type) {
-        //Basic checks
-        if (expression == null) throw new NullPointerException("Expression can't be null");
-        if (expression.length() == 0) return 0d;
-        return CalculatorFactory.getCalc(expression, type).evaluate();
+    public static Double evaluate(String expression, CalculatorFactory.EvaluatorType type) {
+        return CalculatorFactory.getCalc(type).evaluate(expression);
     }
 }

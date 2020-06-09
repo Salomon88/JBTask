@@ -7,17 +7,13 @@ import org.jetbrains.exceptions.UnknownReturnTypeException;
 import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
 import javax.script.ScriptException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class NashornCalcImpl extends AbstractCalc {
 
-    public NashornCalcImpl(String expression) {
-        super(expression);
-    }
-
     @Override
-    public Double evaluate() {
+    public Double evaluate(String expression) {
+        if(expression.length()==0) return 0.0;
+        validateSyntax(expression);
         ScriptEngine engine = new ScriptEngineManager().getEngineByName("nashorn");
         try {
             Object result = engine.eval(expression);
@@ -25,7 +21,7 @@ public class NashornCalcImpl extends AbstractCalc {
             if (result instanceof Double) return (Double) result;
             throw new UnknownReturnTypeException(result.getClass());
         } catch (ScriptException e) {
-        throw new NashornEvalException(e);
+            throw new NashornEvalException(e);
         }
     }
 }

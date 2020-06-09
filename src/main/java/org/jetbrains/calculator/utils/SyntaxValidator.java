@@ -10,6 +10,8 @@ public class SyntaxValidator {
 
     //TODO  This is a dirty hang to use parser twice. Must be lightweight way
     public static void isSyntaxValid(String expression) {
+        //Basic checks
+        if (expression == null) throw new NullPointerException("Expression can't be null");
         org.jetbrains.calculator.antlr.CalcLexer lexer = new org.jetbrains.calculator.antlr.CalcLexer(CharStreams.fromString(expression));
         lexer.addErrorListener(new ErrorSyntaxListener());
         CommonTokenStream tokenStream = new CommonTokenStream(lexer);

@@ -8,19 +8,19 @@ import static java.util.Objects.isNull;
 
 public final class CalculatorFactory {
 
-    public static ICalculator getCalc(String expression, EvaluatotType evaluatotType) {
-        if(isNull(evaluatotType)) return new ANTLRCalcImpl(expression);
-        switch (evaluatotType) {
+    public static ICalculator getCalc(EvaluatorType evaluatorType) {
+        if(isNull(evaluatorType)) return new ANTLRCalcImpl();
+        switch (evaluatorType) {
             case POLISH:
-                return new PolishCalcImpl(expression);
+                return new PolishCalcImpl();
             case NASHORN:
-                return new NashornCalcImpl(expression);
+                return new NashornCalcImpl();
             default:
-                return new ANTLRCalcImpl(expression);
+                return new ANTLRCalcImpl();
         }
     }
 
-    public enum EvaluatotType {
+    public enum EvaluatorType {
         ANTLR,
         NASHORN,
         POLISH

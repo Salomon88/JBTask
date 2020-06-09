@@ -1,5 +1,6 @@
 package org.jetbrains.calculator;
 
 public interface ICalculator{
-    Double evaluate();
+
+    Double evaluate(String expression);
 }

@@ -2,7 +2,7 @@ grammar Calc;
 
 stmt: expr EOF;
 
-expr: '(' expr ')' #paren |
+expr: MINUS? '(' expr ')' #paren |
       expr (MULT|DIV) expr #MulDiv |
       expr (PLUS|MINUS) expr #PlusMinus |
       doublen #number;
