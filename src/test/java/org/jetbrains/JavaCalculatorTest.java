@@ -115,7 +115,6 @@ public class JavaCalculatorTest {
         assertEquals(7.0, JavaCalculator.evaluate("a+4 ", type), 1e-4);
     }
 
-    //TODO implement for Polish implementation
     @Test
     public void negativeExpression1Test() {
         assertEquals(-7.0, JavaCalculator.evaluate("-(4+3) ", type), 1e-4);
@@ -124,6 +123,17 @@ public class JavaCalculatorTest {
     @Test
     public void negativeExpression2Test() {
         assertEquals(1.0, JavaCalculator.evaluate("-(3-4) ", type), 1e-4);
+    }
+
+    @Test
+    public void negativeExpression3Test() {
+        assertEquals(3.0, JavaCalculator.evaluate("-(3-4)*(1+2) ", type), 1e-4);
+    }
+
+    //TODO implement for polish notation
+    @Test
+    public void negativeExpression4Test() {
+        assertEquals(-3.0, JavaCalculator.evaluate("-(3-4)*-(1+2) ", type), 1e-4);
     }
 
 //        ICalculator icalc = CalculatorFactory.getCalc();

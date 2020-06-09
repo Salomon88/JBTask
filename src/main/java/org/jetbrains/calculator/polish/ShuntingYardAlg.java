@@ -63,7 +63,12 @@ public class ShuntingYardAlg {
     }
 
     private static void perform(Deque<Double> stack, char operator) {
-        if(stack.size()==1) return;
+        if(stack.size()==1)  {
+            if(operator=='-') {
+               stack.offerLast(-1*stack.pollLast());
+            }
+            return;
+        };
         Double right = stack.pollLast();
         Double left = stack.pollLast();
         switch (operator) {
