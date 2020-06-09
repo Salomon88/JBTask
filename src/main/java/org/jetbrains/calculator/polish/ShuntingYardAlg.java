@@ -9,6 +9,7 @@ import static java.util.Objects.nonNull;
 
 public class ShuntingYardAlg {
 
+    private ShuntingYardAlg(){}
     public static Deque<Double> polishNotationString(String in) {
         Deque<Character> opStack = new LinkedList<>();
         Deque<Double> output = new LinkedList<>();
@@ -62,6 +63,7 @@ public class ShuntingYardAlg {
     }
 
     private static void perform(Deque<Double> stack, char operator) {
+        if(stack.size()==1) return;
         Double right = stack.pollLast();
         Double left = stack.pollLast();
         switch (operator) {
@@ -76,7 +78,6 @@ public class ShuntingYardAlg {
                 break;
             case '-':
                 stack.offerLast(left - right);
-                break;
         }
     }
 
@@ -84,7 +85,9 @@ public class ShuntingYardAlg {
         if (in.length() - 1 < pos + 1) return false;
         Character last = stack.peekLast();
         char cur = in.charAt(pos);
-        return (nonNull(last) || pos == 0) && Utils.operationsSet.contains(cur) && isDigit(in.charAt(pos + 1));
+        return  (nonNull(last) && last != '(' || pos==0)
+                && (cur=='+' || cur=='-')
+                && isDigit(in.charAt(pos + 1));
     }
 
     private static boolean isHigherPrecedence(char cur, char top) {

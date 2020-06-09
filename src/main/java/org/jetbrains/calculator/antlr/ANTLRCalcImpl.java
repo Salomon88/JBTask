@@ -15,7 +15,6 @@ public class ANTLRCalcImpl extends AbstractCalc {
         org.jetbrains.calculator.antlr.CalcLexer lexer = new org.jetbrains.calculator.antlr.CalcLexer(CharStreams.fromString(expression));
         CommonTokenStream tokenStream = new CommonTokenStream(lexer);
         org.jetbrains.calculator.antlr.CalcParser parser = new org.jetbrains.calculator.antlr.CalcParser(tokenStream);
-        //parser.addErrorListener(new WasperErrorListener());
         org.jetbrains.calculator.antlr.CalcParser.StmtContext stmt = parser.stmt();
         return new EvaluateVisitor().visit(stmt.expr());
     }
