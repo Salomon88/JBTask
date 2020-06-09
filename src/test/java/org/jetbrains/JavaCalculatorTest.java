@@ -11,7 +11,7 @@ import static org.junit.Assert.assertNotEquals;
 
 public class JavaCalculatorTest {
 
-    public static final CalculatorFactory.EvaluatorType type = CalculatorFactory.EvaluatorType.NASHORN;
+    public static final CalculatorFactory.EvaluatorType type = CalculatorFactory.EvaluatorType.ANTLR;
 
     @Test
     public void simpleAddTest() {
