@@ -12,8 +12,6 @@ public class NashornCalcImpl extends AbstractCalc {
 
     @Override
     public Double evaluate(String expression) {
-        if(expression.length()==0) return 0.0;
-        validateSyntax(expression);
         ScriptEngine engine = new ScriptEngineManager().getEngineByName("nashorn");
         try {
             Object result = engine.eval(expression);

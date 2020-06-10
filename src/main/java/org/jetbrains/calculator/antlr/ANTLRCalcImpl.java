@@ -8,7 +8,6 @@ public class ANTLRCalcImpl extends AbstractCalc {
 
     @Override
     public Double evaluate(String expression) {
-        if(expression.length()==0) return 0.0;
         org.jetbrains.calculator.antlr.CalcLexer lexer = new org.jetbrains.calculator.antlr.CalcLexer(CharStreams.fromString(expression));
         lexer.addErrorListener(new BaseErrorListener() {
             @Override

@@ -56,7 +56,7 @@ public class ShuntingYardAlg {
         char curChar;
         for (int i = st; i < in.length(); i++) {
             curChar = in.charAt(i);
-            if (!isDigit(curChar)) break;
+            if (!isDigit(curChar) && curChar!='.') break;
             ++stopIndex;
         }
         return in.substring(st, stopIndex);

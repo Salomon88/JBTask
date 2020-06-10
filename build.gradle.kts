@@ -1,5 +1,3 @@
-import org.jetbrains.kotlin.resolve.calls.model.ResolvedCallArgument.DefaultArgument.arguments
-
 group = "org.jetbrains"
 version = "1.0"
 
@@ -33,9 +31,7 @@ tasks {
             "-visitor",
             "-package",
             "org.jetbrains.calculator.antlr",
-            "-Xexact-output-dir",
-            "-o",
-            "/home/salamon/разработка/calculator/src/main/java/org/jetbrains/calculator/antlr"
+            "-Xexact-output-dir"
         )
     }
 }

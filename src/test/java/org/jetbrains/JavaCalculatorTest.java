@@ -3,15 +3,31 @@ package org.jetbrains;
 
 import org.jetbrains.calculator.CalculatorFactory;
 import org.jetbrains.exceptions.IncorrectSyntaxExpression;
-import org.junit.Ignore;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
 
+import java.util.Arrays;
+import java.util.Collection;
+
+import static org.jetbrains.calculator.CalculatorFactory.EvaluatorType.*;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 
+@RunWith(value = Parameterized.class)
 public class JavaCalculatorTest {
 
-    public static final CalculatorFactory.EvaluatorType type = CalculatorFactory.EvaluatorType.ANTLR;
+    private CalculatorFactory.EvaluatorType type;
+
+    public JavaCalculatorTest(CalculatorFactory.EvaluatorType type) {
+        this.type = type;
+    }
+
+    @Parameterized.Parameters
+    public static Collection dataType() {
+        Object[] data = new Object[]{POLISH, ANTLR, NASHORN};
+        return Arrays.asList(data);
+    }
 
     @Test
     public void simpleAddTest() {
